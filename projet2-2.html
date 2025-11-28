@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Projet 2 — Jeu Snake (explication)</title>
+  <link rel="stylesheet" href="main2.css">
+</head>
+<body>
+  <input id="themeToggle" type="checkbox" class="theme-toggle" />
+  <label for="themeToggle" class="theme-btn">🌙</label>
+
+  <header class="site-header">
+    <div class="container header-flex">
+      <h1>Projet 2 : Jeu Snake</h1>
+      <nav><a href="index3.html">⬅ Retour</a></nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2>Présentation</h2>
+      <p>Ce projet contient un jeu Snake (version JS dans la version complète). Ici, on explique la logique et on donne le code.</p>
+      <h3>Algorithme simple</h3>
+      <ol>
+        <li>Crée une grille (cases)</li>
+        <li>Déplace la tête selon la direction</li>
+        <li>Si la tête touche la nourriture → +1 score et augmenter le serpent</li>
+        <li>Si la tête touche un mur ou le corps → game over</li>
+      </ol>
+    </section>
+
+    <section class="card">
+        <h2>Aperçu</h2>
+        <div class="grid">
+            <article class="project">
+                <img src="img2.png" style="max-width:100%; border-radius:10px;">
+            </article>
+            <article class="project">
+                <img src="img3.png" style="max-width:100%; border-radius:10px;">
+            </article>
+            <article class="project">
+                <img src="img4.png" style="max-width:100%; border-radius:10px;">
+            </article>
+        </div>
+    </section>
+
+    <section class="card">
+      <h2>Extrait de code (JS)</h2>
+      <pre>// Nourriture aléatoire
+  function randomFood() {
+    return {
+      x: Math.floor(Math.random() * gridSize) * box,
+      y: Math.floor(Math.random() * gridSize) * box
+    };
+  }
+</pre>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="container">&copy; 2025</div></footer>
+</body>
+</html>

@@ -1,0 +1,177 @@
+@font-face {
+  font-family: "Tiny";
+  src: url("Ubuntu-Bold.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Ubuntu";
+  src: url("Ubuntu-Italic.ttf") format("truetype") ;
+  font-weight: normal;
+  font-style: normal;
+}
+
+h1 {
+  font-family: "Tiny", cursive, sans-serif;
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+h2 {
+  font-family: "Tiny", cursive, sans-serif;
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+h3 {
+  font-family: "Tiny", cursive, sans-serif;
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+a {
+  font-family: "Ubuntu", cursive, sans-serif;
+  color: #1a73e8;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+p {
+  font-family: "Ubuntu", cursive, sans-serif;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* ===== Reset léger ===== */
+* { box-sizing: border-box; }
+html,body { margin:0; padding:0; height:100%; }
+body { font-family: Inter, system-ui, Arial, sans-serif; background:#222; color:#222; transition: background .3s ease, color .3s ease; }
+
+/* ===== Layout ===== */
+.container { width:92%; max-width:1100px; margin:0 auto; }
+.header-flex { display:flex; align-items:center; justify-content:space-between; gap:16px; padding:18px 0; }
+.site-header { background:#35424a; color:white; padding:12px 0; }
+.site-header h1 { margin:0; font-size:1.4rem; }
+
+/* Nav */
+{ font-size: 30px; position: fixed; z-index: 10; display: flex;}
+.main-nav a { color: white; text-decoration:none; margin:0 10px; font-weight:600; }
+.main-nav a:hover { text-decoration:underline; }
+
+/* Cards & grid */
+.card { background:white; margin:20px 0; padding:20px; border-radius:10px; box-shadow:0 6px 20px rgba(0,0,0,0.06); }
+.grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px; margin-top:12px; }
+.project { background:#fafafa; padding:12px; border-radius:8px; border:1px solid rgba(0,0,0,0.04); }
+.project h3 { margin:0 0 6px 0; font-size:1.05rem; }
+.project a { color:#1a73e8; text-decoration:none; }
+.project a:hover { text-decoration:underline; }
+
+/* Footer */
+.site-footer { background:#35424a; color:white; padding:12px 0; text-align:center; }
+
+/* ===== Theme toggle (checkbox hack) ===== */
+.theme-toggle { position:fixed; left:-9999px; } /* visually hidden checkbox */
+.theme-btn {
+  position:fixed; right:18px; top:18px;
+  width:44px; height:44px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  background: rgba(255,255,255,0.12); color:white; font-size:18px;
+  border:2px solid rgba(255,255,255,0.06); cursor:pointer; z-index:25;
+  transition: transform .18s ease, background .25s ease, color .25s ease;
+}
+.theme-btn:hover { transform:scale(1.06); }
+
+/* When checked => dark theme */
+.theme-toggle:checked + .theme-btn { content:"☀️"; background: #222; color:#111; border-color: rgba(0,0,0,0.08); }
+.theme-toggle:checked ~ .site-header { background:#111; color:#fff; }
+.theme-toggle:checked ~ .site-footer { background:#111; color:#fff; }
+
+/* Better approach: change root colors with :checked + general sibling */
+.theme-toggle:checked ~ body { background:#222; color:#eef2f5; } /* fallback if supported */
+
+/* To ensure content uses the checked state use adjacent sibling selectors from html root */
+/* Because input is before everything, we use :checked ~ selectors */
+.theme-toggle:checked ~ .container .card,
+.theme-toggle:checked ~ .container .project {
+  background:#1e1e1e; color:#e9eef2; box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+  border-color: rgba(255,255,255,0.04);
+}
+.theme-toggle:checked ~ .main-nav a { color: #111; }
+
+/* ===== Subscribe button (CSS only) ===== */
+.subscribe-toggle { position: absolute; left:-9999px; }
+.subscribe-btn {
+  display:inline-block;
+  margin-top:12px;
+  background:#e60000; color:#000; padding:12px 26px; border-radius:999px;
+  font-weight:700; cursor:pointer; transition: transform .12s ease, background .18s ease, color .18s ease;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+.subscribe-btn:hover { transform:scale(1.04); background:#cc0000; color:#fff; }
+
+/* Dark theme specific subscribe */
+.theme-toggle:checked ~ .container #subscribeBtn { background:#ff3b3b; color:#fff; box-shadow:0 0 12px rgba(255,0,0,0.25); }
+
+/* --- Badge affiché après clic --- */
+.subscribed-badge { display: none; font-weight: bold; color: #00ff88; font-size: 1.2em; margin-top: 10px; text-shadow: 0 0 10px rgba(0,255,120,0.5);}
+
+
+/* Quand on coche la case, on masque le bouton et on montre le badge */
+.subscribe-toggle:checked + .subscribe-btn { display: none; }
+
+.subscribe-toggle:checked ~ .subscribed-badge {
+  display: inline-block;
+  animation: popIn 0.4s ease forwards;
+}
+
+/* --- Animation du badge --- */
+@keyframes popIn {
+  0% { transform: scale(0.6); opacity: 0; }
+  60% { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* ===== Confetti / fireworks effect (pure CSS) =====
+   We place many small spans and animate them when checkbox is checked.
+   This is not real physics but a visual burst. */
+.confetti { position:relative; width:100%; height:0; pointer-events:none; }
+.confetti span {
+  position:absolute; left:50%; top:0; width:8px; height:8px; border-radius:2px; opacity:0;
+  transform:translate(-50%,0) scale(.8);
+  animation-fill-mode:forwards;
+}
+.subscribe-toggle:checked ~ .confetti span:nth-child(1)  { background:#ff3b3b; left:30%;  animation:burst1 .9s ease-out; }
+.subscribe-toggle:checked ~ .confetti span:nth-child(2)  { background:#ff9a00; left:45%;  animation:burst2 .95s ease-out; }
+.subscribe-toggle:checked ~ .confetti span:nth-child(3)  { background:#ffd400; left:55%;  animation:burst3 .85s ease-out; }
+.subscribe-toggle:checked ~ .confetti span:nth-child(4)  { background:#00d084; left:70%;  animation:burst4 .92s ease-out; }
+.subscribe-toggle:checked ~ .confetti span:nth-child(5)  { background:#00aaff; left:40%;  animation:burst5 .98s ease-out; }
+.subscribe-toggle:checked ~ .confetti span:nth-child(6)  { background:#aa00ff; left:60%;  animation:burst6 .9s ease-out; }
+.subscribe-toggle:checked ~ .confetti span:nth-child(7)  { background:#ff4da6; left:20%;  animation:burst7 .95s ease-out; }
+.subscribe-toggle:checked ~ .confetti span:nth-child(8)  { background:#ffd89a; left:80%;  animation:burst8 .9s ease-out; }
+.subscribe-toggle:checked ~ .confetti span:nth-child(9)  { background:#7bf1a8; left:10%;  animation:burst9 .9s ease-out; }
+.subscribe-toggle:checked ~ .confetti span:nth-child(10) { background:#8ad4ff; left:90%;  animation:burst10 .9s ease-out; }
+
+/* animations: each burst moves up, sideways and fades */
+@keyframes burst1 { 0% { opacity:1; transform:translate(-50%,0) scale(.8) } 60% { transform:translate(-180px,-200px) rotate(30deg) scale(1); opacity:1 } 100% { transform:translate(-220px,-320px) rotate(60deg) scale(.6); opacity:0 } }
+@keyframes burst2 { 0% { opacity:1 } 60% { transform:translate(-30px,-240px) rotate(-20deg); opacity:1 } 100% { transform:translate(-60px,-360px) rotate(-60deg); opacity:0 } }
+@keyframes burst3 { 0% { opacity:1 } 60% { transform:translate(30px,-220px) rotate(15deg); opacity:1 } 100% { transform:translate(60px,-340px) rotate(45deg); opacity:0 } }
+@keyframes burst4 { 0% { opacity:1 } 60% { transform:translate(160px,-180px) rotate(10deg); opacity:1 } 100% { transform:translate(220px,-300px) rotate(40deg); opacity:0 } }
+@keyframes burst5 { 0% { opacity:1 } 60% { transform:translate(-10px,-200px) rotate(5deg); opacity:1 } 100% { transform:translate(-30px,-320px) rotate(20deg); opacity:0 } }
+@keyframes burst6 { 0% { opacity:1 } 60% { transform:translate(40px,-210px) rotate(-30deg); opacity:1 } 100% { transform:translate(70px,-330px) rotate(-60deg); opacity:0 } }
+@keyframes burst7 { 0% { opacity:1 } 60% { transform:translate(-260px,-160px) rotate(-10deg); opacity:1 } 100% { transform:translate(-300px,-280px) rotate(-30deg); opacity:0 } }
+@keyframes burst8 { 0% { opacity:1 } 60% { transform:translate(260px,-140px) rotate(20deg); opacity:1 } 100% { transform:translate(320px,-260px) rotate(50deg); opacity:0 } }
+@keyframes burst9 { 0% { opacity:1 } 60% { transform:translate(-120px,-210px) rotate(-25deg); opacity:1 } 100% { transform:translate(-160px,-340px) rotate(-45deg); opacity:0 } }
+@keyframes burst10{ 0% { opacity:1 } 60% { transform:translate(120px,-210px) rotate(25deg); opacity:1 } 100% { transform:translate(180px,-350px) rotate(55deg); opacity:0 } }
+
+/* small responsive tweaks */
+@media (max-width:600px){
+  .header-flex { flex-direction:column; align-items:flex-start; gap:6px; padding:12px 0; }
+  .theme-btn { right:12px; top:12px; }
+  .project h3 { font-size:1rem; }
+  .subscribe-btn { padding:10px 18px; }
+}
