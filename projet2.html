@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projet 2 : Jeu Snake en JavaScript</title>
+  <link rel="stylesheet" href="main.css">
+</head>
+<body>
+  <header>
+    <div class="container header-flex">
+      <h1>Projet 2 : Jeu Snake en JavaScript 🐍</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">⬅ Retour au portfolio</a></li>
+        </ul>
+      </nav>
+      <button id="darkModeToggle" title="Changer de thème">🌙</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="section">
+      <h2>Le jeu Snake</h2>
+      <p>Utilise les touches ⬆️ ⬇️ ⬅️ ➡️ pour déplacer le serpent et mange les pommes rouges sans toucher les murs !</p>
+  
+      <canvas id="snakeGame" width="400" height="400"></canvas>
+      <p id="snakeScore">Score : 0</p>
+
+      <div class="snake-buttons">
+        <button id="lancerSnake">🎮 Lancer le jeu</button>
+        <button id="rejouerSnake" style="display:none;">🔁 Rejouer</button>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Mon Portfolio</p>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

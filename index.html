@@ -1,81 +1,81 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Mon Portfolio (HTML+CSS)</title>
-  <link rel="stylesheet" href="main2.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fonts-awesome/7.1.0/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mon Portfolio</title>
+  <link rel="stylesheet" href="main.css">
 </head>
 <body>
-  <!-- Toggle mode (checkbox hack) -->
-  <input id="theme-toggle" type="checkbox" class="theme-toggle" />
-  <label for="theme-toggle" class="theme-btn" aria-hidden="true">🌙</label>
-
-  <header class="site-header">
+  <header>
     <div class="container header-flex">
       <h1>Bienvenue sur Mon Portfolio</h1>
-      <nav class="main-nav" aria-label="Navigation principale">
-        <a href="#moi">À propos de moi</a>
-        <a href="#projets">Projets</a>
-        <a href="#contact">Contact</a>
+      <nav>
+        <ul>
+          <li><a href="#moi">À propos de moi</a></li>
+          <li><a href="#projets">Projets</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
       </nav>
+      <!-- Bouton Dark Mode -->
+      <button id="darkModeToggle" title="Changer de thème">🌙</button>
+      <nav><a href="../index3/index3.html">⬅ Retour</a></nav>
     </div>
   </header>
 
   <main class="container">
-    <section id="moi" class="card">
+    <section id="moi" class="section">
       <h2>À propos de moi</h2>
-      <p>J’aime créer des sites clairs, responsives et accessibles.
-         Ce portfolio présente quelques projets réalisés en HTML, CSS (et parfois JavaScript).</p>
-    </section>
-
-    <section id="projets" class="card">
-      <h2>Mes projets</h2>
-      <div class="grid">
-        <article class="project">
-          <h3><a href="projet1-2.html">Projet 1 — Site vitrine</a></h3>
-          <p>Site statique présentant une entreprise fictive, responsive et sémantique.</p>
-        </article>
-
-        <article class="project">
-          <h3><a href="../index1/index.html">Projet 2 — Site avec java-script</a></h3>
-          <p>Page avec un Snake et un mini-jeu en ligne pour s'amuser .</p>
-        </article>
-      </div>
-    </section>
-
-    <section id="contact" class="card">
-      <h2>Contact</h2>
-      <p>Tu peux me joindre à <a href="mailto:silvaremi1234@gmail.com">silvaremi1234@gmail.com</a>.</p>
+      <img src="img1.jpg" width="125" height="125"/>
+      <p>Je suis passionné par le développement web et les nouvelles technologies.
+         Ce portfolio a pour but de présenter mes projets et compétences.</p>
+      <p>Compétences : HTML, CSS, JavaScript, APIs, Design Responsive</p>
     </section>
     
-    <section id="abonnement" class="card">
-      <h2>Abonne-toi 🔔</h2>
-      <p>Clique sur le bouton pour t’abonner et fêter ça ! 🎉</p>
-
-      <!-- Checkbox cachée qui gère l’état -->
-      <input type="checkbox" id="subscribeToggle" class="subscribe-toggle" />
-
-      <!-- Bouton d’abonnement -->
-      <label for="subscribeToggle" id="subscribeBtn" class="subscribe-btn">S’abonner</label>
-
-      <!-- Badge affiché quand abonné -->
-      <span id="subscribedBadge" class="subscribed-badge">✅ Abonné</span>
-
-      <!-- Confettis décoratifs -->
-      <div class="confetti" aria-hidden="true">
-        <span></span><span></span><span></span><span></span><span></span>
-        <span></span><span></span><span></span><span></span><span></span>
+    <section id="projets" class="section">
+      <h2>Mes projets</h2>
+      <div class="projets-grid">
+        <div class="projet-card">
+          <h3><a href="projet1.html">Projet 1</a></h3>
+          <p>Un site vitrine moderne réalisé en HTML, CSS et JavaScript.</p>
+        </div>
+        <div class="projet-card">
+          <h3><a href="projet2.html">Projet 2</a></h3>
+          <p>Un snake codé en JavaScript.</p>
+        </div>
+        <div class="projet-card">
+          <h3><a href="projet3.html">Projet 3</a></h3>
+          <p>Un mini-jeu codé en JavaScript pour s’amuser en ligne.</p>
+        </div>
       </div>
     </section>
 
+    <section id="contact" class="section">
+      <h2>Contact</h2>
+      <p>Vous pouvez me joindre à <a href="mailto:silvaremi1234@gmail.com">silvaremi1234@gmail.com</a></p>
+      <form class="contact-form">
+        <input type="text" placeholder="Votre nom" required>
+        <input type="email" placeholder="Votre email" required>
+        <textarea placeholder="Votre message" required></textarea>
+        <button type="submit">Envoyer</button>
+      </form>
+    </section>
+    
+    <section class="section" id="abonnement">
+      <h2>Abonne-toi 🔔</h2>
+      <p>Clique sur le bouton pour t’abonner et fêter ça ! 🎉</p>
+      <button id="subscribeBtn">S’abonner</button>
+      <canvas id="fireworks"></canvas>
+    </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container">
-      <p>&copy; 2025 Mon Portfolio — Version HTML/CSS</p>
-    </div>
+  <footer>
+    <p>&copy; 2025 Mon Portfolio</p>
   </footer>
+
+  <!-- Bouton retour en haut -->
+  <button id="topBtn" title="Retour en haut">↑</button>
+
+  <script src="main.js"></script>
 </body>
 </html>

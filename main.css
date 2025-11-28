@@ -1,0 +1,349 @@
+/* --- Styles généraux --- */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  color: #333;
+  line-height: 1.6;
+  transition: background 0.5s ease, color 0.5s ease;
+}
+
+/* --- Header --- */
+header {
+  background: #35424a;
+  color: #ffffff;
+  padding: 20px 0;
+}
+
+.header-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+h1 {
+  margin: 0;
+  font-size: 2em;
+}
+
+/* --- NAV --- */
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+nav li {
+  display: inline;
+  margin: 0 10px;
+}
+
+nav a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* --- Bouton Dark Mode --- */
+#darkModeToggle {
+  background: none;
+  border: none;
+  font-size: 1.5em;
+  cursor: pointer;
+  color: white;
+  transition: transform 0.2s ease;
+}
+
+#darkModeToggle:hover {
+  transform: scale(1.2);
+}
+
+/* --- Bouton d’abonnement --- */
+#subscribeBtn {
+  background: #ff0000;
+  color: #fff;
+  border: none;
+  padding: 15px 30px;
+  font-size: 18px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: transform 0.2s ease, background 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+#subscribeBtn:hover {
+  background: #cc0000;
+  transform: scale(1.1);
+}
+
+/* --- Adaptation au mode clair --- */
+body:not(.dark) #subscribeBtn {
+  background: #e60000; /* rouge un peu plus doux sur fond clair */
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+body:not(.dark) #subscribeBtn:hover {
+  background: #cc0000;
+}
+
+/* --- Adaptation au mode sombre --- */
+body.dark #subscribeBtn {
+  background: #ff3b3b;
+  color: #fff;
+  box-shadow: 0 0 10px rgba(255,0,0,0.5);
+}
+
+body.dark #subscribeBtn:hover {
+  background: #ff1f1f;
+}
+
+/* --- Feux d’artifice --- */
+#fireworks {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* --- Jeu Snake --- */
+#snakeGame {
+  display: block;
+  margin: 20px auto;
+  background: #111;
+  border: 4px solid #333;
+  border-radius: 8px;
+}
+
+#snakeScore {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.2em;
+  margin-top: 10px;
+}
+
+/* --- Bouton rejouer du Snake --- */
+#rejouerSnake {
+  display: block;
+  margin: 15px auto;
+  padding: 10px 20px;
+  background: #ff0000;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+
+#rejouerSnake:hover {
+  transform: scale(1.1);
+  background: #cc0000;
+}
+
+/* Centrage des boutons du Snake (meilleur contrôle) */
+.snake-buttons {
+  display: flex;
+  justify-content: center;   /* centre horizontalement */
+  align-items: center;       /* centre verticalement si nécessaire */
+  gap: 10px;
+  margin-top: 12px;
+}
+
+/* Style des boutons (conserve ce que tu as, juste s'assurer qu'ils restent inline-block) */
+#lancerSnake,
+#rejouerSnake {
+  display: inline-block;
+  margin: 0;
+  background: #ff0000;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 1.05em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.2s ease;
+}
+
+#lancerSnake:hover,
+#rejouerSnake:hover {
+  transform: scale(1.06);
+  background: #cc0000;
+}
+
+/* Optionnel : centrer le conteneur parent au cas où */
+.section { 
+  display: block;
+  /* les sections restent normales, les boutons sont centrés grâce à .snake-buttons */
+}
+
+
+/* --- Container & sections --- */
+.container {
+  width: 70%;
+  margin: auto;
+}
+
+.section {
+  background: #ffffff;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 20px;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-in-out;
+}
+
+.section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- Projets --- */
+.projets-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.projet-card {
+  background: #eaeaea;
+  padding: 15px;
+  border-radius: 8px;
+  transition: transform 1s cubic-bezier(0.45, -0.75, 0.265, 1.55), background 0.3s ease-in-out;
+}
+
+.projet-card:hover {
+  transform: scale(1.05);
+  background: #dcdcdc;
+}
+
+/* --- Formulaire de contact --- */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.contact-form button {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background: #35424a;
+  color: white;
+  cursor: pointer;
+}
+
+.contact-form button:hover {
+  background: #222;
+}
+
+/* --- Footer --- */
+footer {
+  text-align: center;
+  padding: 15px;
+  background: #35424a;
+  color: #ffffff;
+}
+
+/* --- Bouton retour en haut --- */
+#topBtn {
+  display: none;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 99;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background-color: #35424a;
+  color: white;
+  cursor: pointer;
+  padding: 12px 16px;
+  border-radius: 50%;
+  transition: background 0.3s ease;
+}
+
+#topBtn:hover {
+  background-color: #222;
+}
+
+/* --- Mode sombre --- */
+body.dark {
+  background-color: #1c1c1c;
+  color: #f4f4f4;
+}
+
+body.dark header {
+  background: #111;
+}
+
+body.dark .section {
+  background: #2b2b2b;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+}
+
+body.dark .projet-card {
+  background: #3a3a3a;
+}
+
+body.dark .projet-card:hover {
+  background: #444;
+}
+
+body.dark footer {
+  background: #111;
+}
+
+body.dark #topBtn {
+  background: #555;
+}
+
+body.dark #darkModeToggle {
+  color: #f4f4f4;
+}
+
+/* --- 🎮 Styles pour le Mini-jeu Projet 3 --- */
+#playBtn {
+  padding: 15px 25px;
+  font-size: 18px;
+  background: #35424a;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+
+#playBtn:hover {
+  background: #222;
+  transform: scale(1.1);
+}
+
+#score, #timer {
+  font-size: 18px;
+  margin-top: 10px;
+  font-weight: bold;
+  text-align: center;
+}
