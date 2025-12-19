@@ -49,7 +49,7 @@ if (subscribeBtn && canvas) {
   let fireworks = [];
 
     // Charger le son
-  const explosionSound = new Audio("index1/explosion.mp3"); // chemin du son
+  const explosionSound = new Audio("explosion.mp3"); // chemin du son
   explosionSound.volume = 0.3; // volume doux
 
   // Ajuste la taille du canvas
@@ -343,3 +343,4 @@ if (canvasSnake) {
     });
   }
 });
+
